@@ -1,10 +1,25 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles.css" />
+    <title>Index</title>
+  </head>
   <body>
-    <h1><%= title %></h1>
+    <div class="header">
+      <h1><%= title %></h1>
+    </div>
     <% for (let i = 0; i < messages.length; i++) { %>
-    <p><%= messages[i].text %></p>
-    <p><%= messages[i].user %></p>
-    <p><%= messages[i].added %></p>
+    <div class="message">
+      <h2 class="name"><%= messages[i].user %></h2>
+      <p class="text"><%= messages[i].text %></p>
+      <p class="date"><%= messages[i].added %></p>
+      <a href="/message/<%= messages[i].id %>">Details</a>
+    </div>
     <% } %>
+    <div class="add">
+      <a href="/new">Add New Message</a>
+    </div>
   </body>
 </html>
