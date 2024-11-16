@@ -1,20 +1,9 @@
 const { Router } = require("express");
-const messages = require("../db");
+const messageController = require("../controllers/messageController");
 
-const indexRouter = Router();
+const newRouter = Router();
 
-indexRouter.get("/", (req, res) => {
-  res.render("form");
-});
-indexRouter.post("/", (req, res) => {
-  messages.push({
-    id: crypto.randomUUID(),
-    text: req.body.messageText,
-    user: req.body.messageUser,
-    added: new Date(),
-  });
+newRouter.get("/", messageController.createMessageFormGet);
+newRouter.post("/", messageController.createMessagePost);
 
-  res.redirect("/");
-});
-
-module.exports = indexRouter;
+module.exports = newRouter;

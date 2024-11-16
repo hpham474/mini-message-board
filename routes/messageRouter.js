@@ -1,11 +1,7 @@
 const { Router } = require("express");
-const messages = require("../db");
+const messageController = require("../controllers/messageController");
 
 const messageRouter = Router();
 
-messageRouter.get("/:messageId", (req, res) => {
-  const messageId = req.params.messageId;
-  const message = messages.find((msg) => msg.id === messageId);
-  res.render("message", { message: message });
-});
+messageRouter.get("/:messageId", messageController.getMessage);
 module.exports = messageRouter;
