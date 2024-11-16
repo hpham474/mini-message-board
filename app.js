@@ -17,6 +17,11 @@ app.use("/new", newRouter);
 app.use("/message", messageRouter);
 app.use("/", indexRouter);
 
+app.use((err, req, res, next) => {
+  console.error(err);
+  res.status(500).send(err);
+});
+
 const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`Mini message Board - listening on port ${PORT}`);
